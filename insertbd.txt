@@ -1,0 +1,9 @@
+insert into roles(nombre_rol) values ('chanfle'); in serviciorolcrear
+Postman, descargar y utilizar
+mandar en el body de Postman {"nombreRol: "no me la creo"}
+
+INSERT INTO usuarios (cod_rol, documento_usuario, nombres_usuario, apellidos_usuario, genero_usuario, fecha_nacimiento_usuario, telefono_usuario)
+VALUES 
+(2, '123456789', 'Juan', 'Pérez', 1, '1990-05-15', '555-1234'),
+(3, '987654321', 'Ana', 'Gómez', 2, '1995-08-22', '555-5678');
+

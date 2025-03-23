@@ -1,0 +1,36 @@
+{
+  "name": "soyelbackend",
+  "version": "1.0.0",
+  "description": "Back para Ing Software 2025",
+  "keywords": [
+    "IS",
+    "Backend",
+    "Node",
+    "Servicios"
+  ],
+  "license": "ISC",
+  "author": "Andres Guerrero",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon build/index.js",
+    "build": "tsc -w"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "pg-promise": "^11.10.2"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/morgan": "^1.9.9",
+    "dotenv": "^16.4.7",
+    "nodemon": "^3.1.9"
+  }
+}

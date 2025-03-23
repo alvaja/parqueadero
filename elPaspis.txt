@@ -1,0 +1,79 @@
+# Inicia el backend
+npm init
+
+
+# Instala lo que necesitas
+npm i cors
+npm i express
+npm i morgan
+npm i pg-promise
+
+npm i bcryptjs
+npm i jsonwebtoken
+
+npm i dotenv --save-dev
+npm i nodemon --save-dev
+
+npm i @types/cors --save-dev
+npm i @types/express --save-dev
+npm i @types/morgan --save-dev
+
+# Ahora metele TypeScript
+tsc --init
+
+# Ahora te cONFIGURAS El tsconfig.ts
+
+
+# Ahora configuaste el package.json
+
+
+# Ahora si el scafolding
+
+md src/app
+md src/config
+md src/middleware
+md src/external_files
+
+md database
+
+md src/config/api
+md src/config/domain
+md src/config/utilities
+md src/config/connection
+
+md src/external_files/pdf
+md src/external_files/excel
+md src/external_files/word
+md src/external_files/image
+
+md src/app/tipo-vehiculo
+md src/app/tipo-vehiculo/controller
+md src/app/tipo-vehiculo/service
+md src/app/tipo-vehiculo/repository
+md src/app/tipo-vehiculo/model
+md src/app/tipo-vehiculo/route
+
+md src/app/rol
+md src/app/rol/controller
+md src/app/rol/service
+md src/app/rol/repository
+md src/app/rol/model
+md src/app/rol/route
+
+mkdir src/app/accesos
+mkdir src/app/accesos/controller
+mkdir src/app/accesos/service
+mkdir src/app/accesos/repository
+mkdir src/app/accesos/model
+mkdir src/app/accesos/route
+
+# Configuracion de las variables a la backend
+
+PORT = 5432
+DATABASE = "db_ingsoftparking"
+HOST = "locahost"
+USER_DB = "user_ingsoftparking"
+USER_PASSWORD = "c681312192f58ed2be1ce133faff029bf1cd49264e07a901aa365aee9a4e783a"
+
+
+
