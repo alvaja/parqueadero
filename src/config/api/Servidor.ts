@@ -4,6 +4,7 @@ import morgan from "morgan";
 import rutaRolApi from "../../app/rol/route/RutaRol";
 import rutaAccesoApi from "../../app/accesos/route/RutaAcceso";
 import rutaTurnoApi from "../../app/turno/route/RutaTurno";
+import rutaRelTurnosApi from "../../app/rel_turnos_usuarios/route/RutaRelTurnos";
 
 class Servidor {
   public app: express.Application;
@@ -20,6 +21,7 @@ class Servidor {
     this.app.use("/api/rol", rutaRolApi);
     this.app.use("/api/acceso", rutaAccesoApi);
     this.app.use("/api/turno", rutaTurnoApi); 
+    this.app.use("/api/relturnos", rutaRelTurnosApi);
   }
 
   public arranquelo(): void{

@@ -9,6 +9,7 @@ const morgan_1 = __importDefault(require("morgan"));
 const RutaRol_1 = __importDefault(require("../../app/rol/route/RutaRol"));
 const RutaAcceso_1 = __importDefault(require("../../app/accesos/route/RutaAcceso"));
 const RutaTurno_1 = __importDefault(require("../../app/turno/route/RutaTurno"));
+const RutaRelTurnos_1 = __importDefault(require("../../app/rel_turnos_usuarios/route/RutaRelTurnos"));
 class Servidor {
     constructor() {
         this.app = (0, express_1.default)();
@@ -20,6 +21,7 @@ class Servidor {
         this.app.use("/api/rol", RutaRol_1.default);
         this.app.use("/api/acceso", RutaAcceso_1.default);
         this.app.use("/api/turno", RutaTurno_1.default);
+        this.app.use("/api/relturnos", RutaRelTurnos_1.default);
     }
     arranquelo() {
         this.app.listen(this.app.get("PORT"), () => {
