@@ -9,12 +9,12 @@ export const datosRelTurnosCrear = [
 ];
 
 export const datosRelTurnosBorrar = [
-    param("codRelTurnos", "Debe ser un numero").isInt(),
-    param("codRelTurnos", "Maximo 6 caracteres").isLength({ max: 6}),
+    param("cod_turnousuario", "Debe ser un numero").isInt(),
+    param("cod_turno", "Maximo 6 caracteres").isLength({ max: 6}),
 ];
 
 export const datosRelTurnosActualizar = [
-    body("codRelTurnos", "Debe ser un número entero").isInt().not().isEmpty(),
-    body("cod_turnousuario", "Debe ser un número entero").isInt(),
+    body("cod_turnousuario", "Debe ser un número entero").isInt().not().isEmpty(),
     body("cod_turno", "Debe ser un número entero").isInt(),
+    body("cod_usuario", "Debe ser un número entero").isInt(),
 ];
