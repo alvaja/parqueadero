@@ -2,28 +2,28 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RelTurnos = void 0;
 class RelTurnos {
-    constructor(cod_turnousuario, cod_turno, cod_usuario) {
-        this.cod_turnousuario = cod_turnousuario;
-        this.cod_turno = cod_turno;
-        this.cod_usuario = cod_usuario;
+    constructor(codTurnoUsuario, codTurno, codUsuario) {
+        this.codTurnoUsuario = codTurnoUsuario;
+        this.codTurno = codTurno;
+        this.codUsuario = codUsuario;
     }
     getCodTurnousuario() {
-        return this.cod_turnousuario;
+        return this.codTurnoUsuario;
     }
-    setCodTurnousuario(cod_turnousuario) {
-        this.cod_turnousuario = cod_turnousuario;
+    setCodTurnousuario(codTurnoUsuario) {
+        this.codTurnoUsuario = codTurnoUsuario;
     }
     getCodTurno() {
-        return this.cod_turno;
+        return this.codTurno;
     }
-    setCodTurno(cod_turno) {
-        this.cod_turno = cod_turno;
+    setCodTurno(codTurno) {
+        this.codTurno = codTurno;
     }
     getCodUsuario() {
-        return this.cod_usuario;
+        return this.codUsuario;
     }
-    setCodUsuario(cod_usuario) {
-        this.cod_usuario = cod_usuario;
+    setCodUsuario(codUsuario) {
+        this.codUsuario = codUsuario;
     }
 }
 exports.RelTurnos = RelTurnos;

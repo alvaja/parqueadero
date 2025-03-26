@@ -1,4 +1,4 @@
-export const SQL_RELTURNO = {
+export const  SQL_RELTURNO = {
     FIND_ALL: "SELECT * FROM rel_turno_usuario ORDER BY cod_turnousuario",
   
     FIND_BY_ID: "SELECT * FROM rel_turno_usuario WHERE cod_turnousuario = $1",
@@ -6,7 +6,7 @@ export const SQL_RELTURNO = {
     HOW_MANY:"SELECT COUNT(*) as cantidad FROM rel_turno_usuario  \
     WHERE cod_turnousuario = $1",
   
-    ADD: "INSERT INTO rel_turno_usuario (cod_turnousuario, cod_turno, cod_usuario) VALUES ($1, $2, $3) \
+    ADD: "INSERT INTO rel_turno_usuario (cod_turno, cod_usuario) VALUES ($1, $2) \
     RETURNING cod_turnousuario",
   
     DELETE: "DELETE FROM rel_turno_usuario WHERE cod_turnousuario = $1",

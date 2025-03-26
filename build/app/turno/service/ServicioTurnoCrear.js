@@ -22,16 +22,16 @@ class ServicioTurnoCrear {
                 let caso = 1;
                 let objGrabado;
                 const parqueaderoExiste = yield consulta.one(sql_turno_1.SQL_TURNOS.HOW_MANY, [
-                    obj.cod_parqueadero
+                    obj.codParqueadero
                 ]);
                 if (parqueaderoExiste.cantidad != 0) {
                     caso = 2;
                     objGrabado = yield consulta.one(sql_turno_1.SQL_TURNOS.ADD, [
-                        obj.cod_parqueadero,
-                        obj.descripcion_turno,
-                        obj.fecha_turno,
-                        obj.hora_inicio_turno,
-                        obj.hora_fin_turno,
+                        obj.codParqueadero,
+                        obj.descripcionTurno,
+                        obj.fechaTurno,
+                        obj.horaInicioTurno,
+                        obj.horaFinTurno,
                     ]);
                     obj.setCodTurno(objGrabado.cod_turno);
                 }

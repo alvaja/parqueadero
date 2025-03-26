@@ -1,36 +1,36 @@
 export class RelTurnos {
-    public cod_turnousuario: number;
-    public cod_turno: number;
-    public cod_usuario: number;
+    public codTurnoUsuario: number;
+    public codTurno: number;
+    public codUsuario: number;
 
-    constructor(cod_turnousuario: number, cod_turno: number, cod_usuario: number) {
-        this.cod_turnousuario = cod_turnousuario;
-        this.cod_turno = cod_turno;
-        this.cod_usuario = cod_usuario;
+    constructor(codTurnoUsuario: number, codTurno: number, codUsuario: number) {
+        this.codTurnoUsuario = codTurnoUsuario;
+        this.codTurno = codTurno;
+        this.codUsuario = codUsuario;
     }  
 
     public getCodTurnousuario(): number{
-        return this.cod_turnousuario;
+        return this.codTurnoUsuario;
     }
 
-    public setCodTurnousuario(cod_turnousuario: number){
-        this.cod_turnousuario = cod_turnousuario;
+    public setCodTurnousuario(codTurnoUsuario: number){
+        this.codTurnoUsuario = codTurnoUsuario;
     }
 
     public getCodTurno(): number{
-        return this.cod_turno;
+        return this.codTurno;
     }
 
-    public setCodTurno(cod_turno: number){
-        this.cod_turno = cod_turno; 
+    public setCodTurno(codTurno: number){
+        this.codTurno = codTurno; 
     }
 
     public getCodUsuario(): number{
-        return this.cod_usuario;
+        return this.codUsuario;
     }
 
-    public setCodUsuario(cod_usuario: number){
-        this.cod_usuario = cod_usuario;
+    public setCodUsuario(codUsuario: number){
+        this.codUsuario = codUsuario;
     }
 
 

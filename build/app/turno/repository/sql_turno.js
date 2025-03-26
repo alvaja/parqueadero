@@ -5,6 +5,7 @@ exports.SQL_TURNOS = {
     FIND_ALL: "SELECT * FROM turnos ORDER BY cod_turno",
     HOW_MANY: `SELECT COUNT(*) AS cantidad FROM parqueaderos WHERE cod_parqueadero = $1`,
     FIND_BY_ID: "SELECT * FROM turnos WHERE cod_turno = $1",
+    HOW_MANY_USUARIOS: "SELECT COUNT(*) FROM rel_turno_usuario WHERE cod_turno = $1",
     ADD: `INSERT INTO turnos (cod_parqueadero, descripcion_turno, fecha_turno, hora_inicio_turno, hora_fin_turno) 
         VALUES ($1, $2, $3, $4, $5) RETURNING cod_turno`,
     DELETE: "DELETE FROM turnos WHERE cod_turno = $1",

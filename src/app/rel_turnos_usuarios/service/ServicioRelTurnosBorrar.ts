@@ -8,7 +8,7 @@ class ServicioRelTurnosBorrar {
     protected static async borrar(obj: RelTurnos, res: Response): Promise<any> {
         await pool
           .task((consulta) => {
-            return consulta.result(SQL_RELTURNO.DELETE, [obj.cod_turnousuario]);
+            return consulta.result(SQL_RELTURNO.DELETE, [obj.codTurnoUsuario]);
           })
           .then((respuesta) => {
             if (respuesta.rowCount > 0) {

@@ -6,9 +6,8 @@ import { Request, Response } from "express";
 class ControladorRelTurnosActualizar extends ServicioRelTurnosActualizar {
     public llamarActualizarRelTurnos(req: Request, res: Response): void {
         const objRelTurno = new RelTurnos(0, 0, 0);
-        objRelTurno.cod_turnousuario = req.body.cod_turnousuario;
-        objRelTurno.cod_turno = req.body.cod_turno;
-        objRelTurno.cod_usuario = req.body.cod_usuario;
+        objRelTurno.codTurno = req.body.codTurno;
+        objRelTurno.codUsuario = req.body.codUsuario;
         ServicioRelTurnosActualizar.actualizarRelTurnos(objRelTurno, res);
     }
 }

@@ -8,9 +8,8 @@ const ServicioRelTurnosActualizar_1 = __importDefault(require("../service/Servic
 class ControladorRelTurnosActualizar extends ServicioRelTurnosActualizar_1.default {
     llamarActualizarRelTurnos(req, res) {
         const objRelTurno = new RelTurnos_1.default(0, 0, 0);
-        objRelTurno.cod_turnousuario = req.body.cod_turnousuario;
-        objRelTurno.cod_turno = req.body.cod_turno;
-        objRelTurno.cod_usuario = req.body.cod_usuario;
+        objRelTurno.codTurno = req.body.codTurno;
+        objRelTurno.codUsuario = req.body.codUsuario;
         ServicioRelTurnosActualizar_1.default.actualizarRelTurnos(objRelTurno, res);
     }
 }

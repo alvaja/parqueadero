@@ -4,40 +4,43 @@ import { SQL_RELTURNO } from "../repository/sql_relturnos";
 import RelTurnos from "../model/RelTurnos";
 
 class ServicioRelTurnosCrear {
-    protected static async grabarRelTurnos(obj: RelTurnos, resp: Response): Promise<any> {
-        await pool
-          .task(async (consulta) => {
-            let caso = 1;
-            let objGrabado: any;
+  protected static async grabarRelTurnos(obj: RelTurnos, resp: Response): Promise<any> {
+    await pool
+      .task(async (consulta) => {
+        console.log(obj.codTurno, obj.codUsuario);
+        const { cantidad } = await consulta.one(SQL_RELTURNO.HOW_MANY, [
+          obj.codUsuario,
+        ]);
 
-            const acceso = await consulta.one(SQL_RELTURNO.HOW_MANY, [
-              obj.cod_turnousuario,
-            ]);
-            if (acceso.cantidad == 0) {
-              caso = 2;
-              objGrabado = await consulta.one(SQL_RELTURNO.ADD, [
-                obj.cod_turnousuario,
-                obj.cod_turno,
-                obj.cod_usuario,
-              ]);
-            }
-            return { caso, objGrabado };
-          })
-          .then(({ caso, objGrabado }) => {
-            switch (caso) {
-              case 1:
-                resp.status(400).json({ Respuesta: "Ya existe" });
-                break;
-              default:
-                resp.status(202).json(objGrabado);
-                break;
-            }
-          })
-          .catch((miError) => {
-            console.log(miError);
-            resp.status(400).json({ Respuesta: "Error SQL" });
-          });
-    }
+        if (Number(cantidad) > 0) {
+          return { caso: 1 };
+        }
+
+        const objGrabado = await consulta.one(SQL_RELTURNO.ADD, [
+          obj.codTurno,
+          obj.codUsuario  
+        ]);
+
+        return { caso: 2, objGrabado };
+      })
+      .then(({ caso, objGrabado }) => {
+        if (caso === 1) {
+          resp.status(400).json({ Respuesta: 'Ya existe' });
+        } else {
+          resp.status(201).json(objGrabado);
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        if (error.code == "23503") {
+          resp.status(409).json({ Respuesta: 'No se puede agregar el turno porque viola la llave foránea.' });
+        } else{
+          resp.status(400).json({ Respuesta: 'Error SQL' });
+        }
+        
+      });
+  }
 }
+
 
 export default ServicioRelTurnosCrear;

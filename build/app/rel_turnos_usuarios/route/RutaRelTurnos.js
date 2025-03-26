@@ -13,7 +13,7 @@ const ControladorRelTurnosActualizar_1 = __importDefault(require("../controller/
 class RutaRelTurno {
     constructor() {
         this.rutaRelTurnoApi = (0, express_1.Router)();
-        this.rutaRelTurnoApi.post("/add", ValidarRelTurnos_1.datosRelTurnosCrear, ValidarDatos_1.default.ahora, ControladorRelTurnosCrear_1.default.llamarGrabarRelTurnos);
+        this.rutaRelTurnoApi.post("/add", ValidarRelTurnos_1.datosRelTurnosCrear, ControladorRelTurnosCrear_1.default.llamarGrabarRelTurnos);
         this.rutaRelTurnoApi.get("/getall", ControladorRelTurnosConsultar_1.default.llamarObtenerTodos);
         this.rutaRelTurnoApi.delete("/delete", ValidarRelTurnos_1.datosRelTurnosBorrar, ControladorRelTurnosBorrar_1.default.llamarBorrar);
         this.rutaRelTurnoApi.put("/update", ValidarRelTurnos_1.datosRelTurnosActualizar, ValidarDatos_1.default.ahora, ControladorRelTurnosActualizar_1.default.llamarActualizarRelTurnos);

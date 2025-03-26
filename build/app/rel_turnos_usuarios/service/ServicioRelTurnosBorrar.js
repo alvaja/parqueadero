@@ -19,7 +19,7 @@ class ServicioRelTurnosBorrar {
         return __awaiter(this, void 0, void 0, function* () {
             yield dbConnection_1.default
                 .task((consulta) => {
-                return consulta.result(sql_relturnos_1.SQL_RELTURNO.DELETE, [obj.cod_turnousuario]);
+                return consulta.result(sql_relturnos_1.SQL_RELTURNO.DELETE, [obj.codTurnoUsuario]);
             })
                 .then((respuesta) => {
                 if (respuesta.rowCount > 0) {

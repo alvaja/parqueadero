@@ -18,20 +18,35 @@ class ServicioTurnoBorrar {
     static borrar(obj, res) {
         return __awaiter(this, void 0, void 0, function* () {
             yield dbConnection_1.default
-                .task((consulta) => {
-                return consulta.result(sql_turno_1.SQL_TURNOS.DELETE, [obj.cod_turno]);
-            })
+                .task((consulta) => __awaiter(this, void 0, void 0, function* () {
+                const { count } = yield consulta.one(sql_turno_1.SQL_TURNOS.HOW_MANY_USUARIOS, [obj.codTurno]);
+                if (Number(count) > 0) {
+                    return { caso: 1 };
+                }
+                const resultado = yield consulta.result(sql_turno_1.SQL_TURNOS.DELETE, [obj.codTurno]);
+                return {
+                    caso: resultado.rowCount > 0 ? 2 : 3,
+                };
+            }))
                 .then((respuesta) => {
-                if (respuesta.rowCount > 0) {
-                    res.status(200).json({ Respuesta: "Turno eliminado con éxito" });
-                }
-                else {
-                    res.status(404).json({ Respuesta: "Turno no encontrado" });
+                switch (respuesta.caso) {
+                    case 1:
+                        res.status(400).json({
+                            Respuesta: "No se puede eliminar el turno porque está siendo referenciado.",
+                        });
+                        break;
+                    case 2:
+                        res.status(200).json({ Respuesta: "Turno eliminado con éxito" });
+                        break;
+                    case 3:
+                    default:
+                        res.status(400).json({ Respuesta: "Turno no encontrado" });
+                        break;
                 }
             })
-                .catch((miError) => {
-                console.log(miError);
-                res.status(400).json({ Respuesta: "Error Elimnando" });
+                .catch((err) => {
+                console.error(err);
+                res.status(400).json({ Respuesta: "Error eliminando" });
             });
         });
     }

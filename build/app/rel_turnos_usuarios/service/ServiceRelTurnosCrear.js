@@ -19,34 +19,35 @@ class ServicioRelTurnosCrear {
         return __awaiter(this, void 0, void 0, function* () {
             yield dbConnection_1.default
                 .task((consulta) => __awaiter(this, void 0, void 0, function* () {
-                let caso = 1;
-                let objGrabado;
-                const acceso = yield consulta.one(sql_relturnos_1.SQL_RELTURNO.HOW_MANY, [
-                    obj.cod_turnousuario,
+                console.log(obj.codTurno, obj.codUsuario);
+                const { cantidad } = yield consulta.one(sql_relturnos_1.SQL_RELTURNO.HOW_MANY, [
+                    obj.codUsuario,
                 ]);
-                if (acceso.cantidad == 0) {
-                    caso = 2;
-                    objGrabado = yield consulta.one(sql_relturnos_1.SQL_RELTURNO.ADD, [
-                        obj.cod_turnousuario,
-                        obj.cod_turno,
-                        obj.cod_usuario,
-                    ]);
+                if (Number(cantidad) > 0) {
+                    return { caso: 1 };
                 }
-                return { caso, objGrabado };
+                const objGrabado = yield consulta.one(sql_relturnos_1.SQL_RELTURNO.ADD, [
+                    obj.codTurno,
+                    obj.codUsuario
+                ]);
+                return { caso: 2, objGrabado };
             }))
                 .then(({ caso, objGrabado }) => {
-                switch (caso) {
-                    case 1:
-                        resp.status(400).json({ Respuesta: "Ya existe" });
-                        break;
-                    default:
-                        resp.status(202).json(objGrabado);
-                        break;
+                if (caso === 1) {
+                    resp.status(400).json({ Respuesta: 'Ya existe' });
+                }
+                else {
+                    resp.status(201).json(objGrabado);
                 }
             })
-                .catch((miError) => {
-                console.log(miError);
-                resp.status(400).json({ Respuesta: "Error SQL" });
+                .catch((error) => {
+                console.error(error);
+                if (error.code == "23503") {
+                    resp.status(409).json({ Respuesta: 'No se puede agregar el turno porque viola la llave foránea.' });
+                }
+                else {
+                    resp.status(400).json({ Respuesta: 'Error SQL' });
+                }
             });
         });
     }
