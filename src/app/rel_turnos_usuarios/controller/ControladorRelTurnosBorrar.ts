@@ -5,7 +5,8 @@ import { Request, Response } from "express";
 
 class ControladorRelTurnosBorrar extends ServicioRelTurnosBorrar{
     public llamarBorrar(req: Request, res: Response): void{
-        const codTurnoUsuario = Number(req.body.codTurnoUsuario);
+        //console.log("params recibido:", req.params);
+        const codTurnoUsuario = Number(req.params.codTurnoUsuario);
         const objRelTurno =  new RelTurnos(codTurnoUsuario, 0, 0);
         ServicioRelTurnosBorrar.borrar(objRelTurno, res);
     }

@@ -5,10 +5,9 @@ import RelTurnos from "../model/RelTurnos";
 class ControladorRelTurnosCrear extends ServicioRelTurnosCrear {
     public llamarGrabarRelTurnos(req: Request, resp: Response): void {
       console.log("Body recibido:", req.body);
-      const { codTurno, codUsuario } = req.body;
       const objTemporal = new RelTurnos(0, 0, 0);
-      objTemporal.codTurno = codTurno;
-      objTemporal.codUsuario = codUsuario;
+      objTemporal.codTurno = req.body.codTurno;
+      objTemporal.codUsuario = req.body.codUsuario;
       console.log(objTemporal);
       ServicioRelTurnosCrear.grabarRelTurnos(objTemporal, resp);
     }

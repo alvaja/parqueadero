@@ -21,16 +21,16 @@ class ServicioTurnoActualizar {
                 .task((consulta) => __awaiter(this, void 0, void 0, function* () {
                 let caso = 1;
                 let objActualizado;
-                const turnoExiste = yield consulta.one(sql_turno_1.SQL_TURNOS.FIND_BY_ID, [obj.cod_turno]);
+                const turnoExiste = yield consulta.one(sql_turno_1.SQL_TURNOS.FIND_BY_ID, [obj.codTurno]);
                 if (turnoExiste.cantidad != 0) {
                     caso = 2;
                     objActualizado = yield consulta.result(sql_turno_1.SQL_TURNOS.UPDATE, [
-                        obj.cod_turno,
-                        obj.cod_parqueadero,
-                        obj.descripcion_turno,
-                        obj.fecha_turno,
-                        obj.hora_inicio_turno,
-                        obj.hora_fin_turno,
+                        obj.codTurno,
+                        obj.codParqueadero,
+                        obj.descripcionTurno,
+                        obj.fechaTurno,
+                        obj.horaInicioTurno,
+                        obj.horaInicioTurno,
                     ]);
                 }
                 return { caso, objActualizado };
