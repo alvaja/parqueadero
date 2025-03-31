@@ -8,10 +8,9 @@ const RelTurnos_1 = __importDefault(require("../model/RelTurnos"));
 class ControladorRelTurnosCrear extends ServiceRelTurnosCrear_1.default {
     llamarGrabarRelTurnos(req, resp) {
         console.log("Body recibido:", req.body);
-        const { codTurno, codUsuario } = req.body;
         const objTemporal = new RelTurnos_1.default(0, 0, 0);
-        objTemporal.codTurno = codTurno;
-        objTemporal.codUsuario = codUsuario;
+        objTemporal.codTurno = req.body.codTurno;
+        objTemporal.codUsuario = req.body.codUsuario;
         console.log(objTemporal);
         ServiceRelTurnosCrear_1.default.grabarRelTurnos(objTemporal, resp);
     }

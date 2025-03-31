@@ -3,8 +3,8 @@ export const  SQL_RELTURNO = {
   
     FIND_BY_ID: "SELECT * FROM rel_turno_usuario WHERE cod_turnousuario = $1",
   
-    HOW_MANY:"SELECT COUNT(*) as cantidad FROM rel_turno_usuario  \
-    WHERE cod_turnousuario = $1",
+    HOW_MANY:"SELECT COUNT(*) as cantidad FROM rel_turno_usuario \
+    WHERE cod_usuario = $1",
   
     ADD: "INSERT INTO rel_turno_usuario (cod_turno, cod_usuario) VALUES ($1, $2) \
     RETURNING cod_turnousuario",

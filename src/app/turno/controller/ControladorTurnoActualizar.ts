@@ -6,12 +6,12 @@ class ControladorTurnoActualizar extends ServicioTurnoActualizar {
   public llamarActualizarTurno(req: Request, res: Response): void {
     //console.log("Body recibido:", req.body);
     const objTemporal = new Turno(0, 0, "", "", "", "");
-    objTemporal.cod_turno = req.body.cod_turno;
-    objTemporal.cod_parqueadero =  req.body.cod_parqueadero;
-    objTemporal.descripcion_turno = req.body.descripcion_turno;
-    objTemporal.fecha_turno = req.body.fecha_turno;
-    objTemporal.hora_inicio_turno = req.body.hora_inicio_turno;
-    objTemporal.hora_fin_turno = req.body.hora_fin_turno;
+    objTemporal.codTurno = req.body.codTurno;
+    objTemporal.codParqueadero =  req.body.codParqueadero;
+    objTemporal.descripcionTurno = req.body.descripcionTurno;
+    objTemporal.fechaTurno = req.body.fechaTurno;
+    objTemporal.horaInicioTurno = req.body.horaInicioTurno;
+    objTemporal.horaFinTurno = req.body.horaFinTurno;
     ServicioTurnoActualizar.actualizarTurno(objTemporal, res);
   }
 }

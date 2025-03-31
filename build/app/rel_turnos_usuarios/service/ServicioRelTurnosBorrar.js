@@ -18,20 +18,28 @@ class ServicioRelTurnosBorrar {
     static borrar(obj, res) {
         return __awaiter(this, void 0, void 0, function* () {
             yield dbConnection_1.default
-                .task((consulta) => {
-                return consulta.result(sql_relturnos_1.SQL_RELTURNO.DELETE, [obj.codTurnoUsuario]);
-            })
+                .task((consulta) => __awaiter(this, void 0, void 0, function* () {
+                const resultado = yield consulta.result(sql_relturnos_1.SQL_RELTURNO.DELETE, [
+                    obj.codTurnoUsuario,
+                ]);
+                return {
+                    caso: resultado.rowCount > 0 ? 2 : 3, // 2 = eliminado, 3 = no encontrado
+                };
+            }))
                 .then((respuesta) => {
-                if (respuesta.rowCount > 0) {
-                    res.status(200).json({ mensaje: "Registro eliminado" });
-                }
-                else {
-                    res.status(404).json({ mensaje: "Registro no encontrado" });
+                switch (respuesta.caso) {
+                    case 2:
+                        res.status(200).json({ mensaje: "Rel Turno eliminado con éxito" });
+                        break;
+                    case 3:
+                    default:
+                        res.status(404).json({ mensaje: "Registro no encontrado" });
+                        break;
                 }
             })
-                .catch((miError) => {
-                console.log(miError);
-                res.status(400).json({ mensaje: "Error Elimnando" });
+                .catch((err) => {
+                console.error(err);
+                res.status(400).json({ mensaje: "Error eliminando la relación" });
             });
         });
     }
